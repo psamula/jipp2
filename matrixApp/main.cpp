@@ -14,7 +14,10 @@ int main (int argc, char* argv[]) {
             int rows;
             int cols;
             cin >> rows;
+            checkInput();
             cin >> cols;
+            checkInput();
+
 
             if (strcmp(choice, "double") == 0) {
 
@@ -46,7 +49,9 @@ int main (int argc, char* argv[]) {
             int rows;
             int cols;
             cin >> rows;
+            checkInput();
             cin >> cols;
+            checkInput();
 
             if (strcmp(choice, "double") == 0) {
 
@@ -77,13 +82,17 @@ int main (int argc, char* argv[]) {
             int rows;
             int cols;
             cin >> rows;
+            checkInput();
             cin >> cols;
+            checkInput();
 
             cout << "Podaj liczbe wierszy i kolumn drugiej macierzy" << endl;
             int rows2;
             int cols2;
             cin >> rows2;
+            checkInput();
             cin >> cols2;
+            checkInput();
 
             if (cols != rows2) {
                 cout << "Liczba wierszy pierwszej macierzy musi byc rowna liczbie kolumn drugiej!" << endl;
@@ -134,7 +143,9 @@ int main (int argc, char* argv[]) {
                 cout << "Ile wierszy i kolumn ma miec macierz?" << endl;
                 int rows, cols;
                 cin >> rows;
+                checkInput();
                 cin >> cols;
+                checkInput();
 
                 double **mat = createDoubleArray(rows, cols);
 
@@ -144,6 +155,7 @@ int main (int argc, char* argv[]) {
 
                 int scalar;
                 cin >> scalar;
+                checkInput();
 
                 double **final = multiplyByScalar(mat, rows, cols, scalar);
                 printArray(final, rows, cols);
@@ -153,7 +165,9 @@ int main (int argc, char* argv[]) {
                 cout << "Ile wierszy i kolumn ma miec macierz?" << endl;
                 int rows, cols;
                 cin >> rows;
+                checkInput();
                 cin >> cols;
+                checkInput();
 
                 int **mat = createIntArray(rows, cols);
 
@@ -163,7 +177,7 @@ int main (int argc, char* argv[]) {
 
                 int scalar;
                 cin >> scalar;
-
+                checkInput();
                 int **final = multiplyByScalar(mat, rows, cols, scalar);
                 printArray(final, rows, cols);
             }
@@ -171,8 +185,231 @@ int main (int argc, char* argv[]) {
 
 
         }
+        else if (strcmp(argv[1], "transpozeMatrix") == 0) {
+            cout << "Jakiego typu macierz, int czy double?" << endl;
+            char choice[10];
+            cin >> choice;
+
+            if (strcmp(choice, "double") == 0) {
+                cout << "Ile wierszy i kolumn ma miec transponowana macierz?" << endl;
+                int rows, cols;
+                cin >> rows;
+                checkInput();
+                cin >> cols;
+                checkInput();
+
+                double **mat = createDoubleArray(rows, cols);
+
+                mat = passDoubleTheMatrix(rows, cols);
+
+                double **final = transpozeMatrix(mat, rows, cols);
+                printArray(final, cols, rows);
+
+            } else if (strcmp(choice, "int") == 0) {
+                cout << "Ile wierszy i kolumn ma miec transponowana macierz?" << endl;
+                int rows, cols;
+                cin >> rows;
+                checkInput();
+                cin >> cols;
+                checkInput();
+
+                int **mat = createIntArray(rows, cols);
+
+                mat = passIntTheMatrix(rows, cols);
+
+                int **final = transpozeMatrix(mat, rows, cols);
+                printArray(final, cols, rows);
+            }
+
+        }
+        else if (strcmp(argv[1], "powerMatrix") == 0) {
+            cout << "Ile wierszy i kolumn ma miec macierz?" << endl;
+            int rows, cols;
+            cin >> rows;
+            checkInput();
+            cin >> cols;
+            checkInput();
+            if (cols != rows) {
+                cout << "Potegjemy tylko macierze kwadratowe!" << endl;
+                return 0;
+            }
+            cout << "Jakiego typu macierz, int czy double?" << endl;
+            char choice[10];
+            cin >> choice;
+
+            if (strcmp(choice, "double") == 0) {
+
+
+                double **mat = createDoubleArray(rows, cols);
+
+                mat = passDoubleTheMatrix(rows, cols);
+
+                cout << "Do ktorej potegi?" << endl;
+                unsigned int potega;
+                cin >> potega;
+                checkInput();
+                double **final = powerMatrix(mat, rows, cols, potega);
+                printArray(final, cols, rows);
+
+            } else if (strcmp(choice, "int") == 0) {
+
+                int **mat = createIntArray(rows, cols);
+
+                mat = passIntTheMatrix(rows, cols);
+
+                cout << "Do ktorej potegi?" << endl;
+                unsigned int potega;
+                cin >> potega;
+                checkInput();
+                int **final = powerMatrix(mat, rows, cols, potega);
+                printArray(final, cols, rows);
+            }
+
+        }
+        else if (strcmp(argv[1], "determinantMatrix") == 0) {
+            cout << "Ile wierszy i kolumn ma miec macierz?" << endl;
+            int rows, cols;
+            cin >> rows;
+            checkInput();
+            cin >> cols;
+            checkInput();
+            if (rows != cols) {
+                cout << "Macierz musi byc kwadratowa!" << endl;
+                return 0;
+            }
+            cout << "Jakiego typu macierz, int czy double?" << endl;
+            char choice[10];
+            cin >> choice;
+
+            if (strcmp(choice, "double") == 0) {
+
+
+                double **mat = createDoubleArray(rows, cols);
+
+                mat = passDoubleTheMatrix(rows, cols);
+
+
+                double det = determinantMatrix(mat, rows);
+                cout << det << endl;
+
+            } else if (strcmp(choice, "int") == 0) {
+
+                int **mat = createIntArray(rows, cols);
+
+                mat = passIntTheMatrix(rows, cols);
+
+
+                int det = determinantMatrix(mat, rows);
+                cout << det << endl;
+            }
+
+        }
+        else if (strcmp(argv[1], "matrisIsDiagonal") == 0) {
+            cout << "Ile wierszy i kolumn ma miec macierz?" << endl;
+            int rows, cols;
+            cin >> rows;
+            checkInput();
+            cin >> cols;
+            checkInput();
+            if (rows != cols) {
+                cout << "Macierz musi byc kwadratowa!" << endl;
+                return 0;
+            }
+            cout << "Jakiego typu macierz, int czy double?" << endl;
+            char choice[10];
+            cin >> choice;
+
+            if (strcmp(choice, "double") == 0) {
+
+
+                double **mat = createDoubleArray(rows, cols);
+
+                mat = passDoubleTheMatrix(rows, cols);
+
+                if (matrixIsDiagonal(mat, rows, cols) == true) cout << "Macierz jest diagonalna" << endl;
+                else cout << "Macierz nie jest diagonalna" << endl;
+
+            } else if (strcmp(choice, "int") == 0) {
+
+                int **mat = createIntArray(rows, cols);
+
+                mat = passIntTheMatrix(rows, cols);
+
+                if (matrixIsDiagonal(mat, rows, cols) == true) cout << "Macierz jest diagonalna" << endl;
+                else cout << "Macierz nie jest diagonalna" << endl;
+            }
+
+        }
+        else if (strcmp(argv[1], "sortRow") == 0) {
+            cout << "Jakiego typu macierz, int czy double?" << endl;
+            char choice[10];
+            cin >> choice;
+            checkInput();
+            cout << "Ile kolumn ma wiersz?" << endl;
+            int cols;
+            cin >> cols;
+            checkInput();
+
+            if (strcmp(choice, "double") == 0) {
+                cout << "Podaj wiersz" << endl;
+                double *final = new double[cols];
+                for (int i = 0; i < cols; i++) {
+                    cin >> final[i];
+                }
+                sortRow(final, cols);
+                for (int i = 0; i < cols; i++) {
+                    cout << final[i] << " " << endl;
+                }
+            }
+            else if (strcmp(choice, "int") == 0) {
+                cout << "Podaj wiersz" << endl;
+                int *final = new int[cols];
+                for (int i = 0; i < cols; i++) {
+                    cin >> final[i];
+                }
+                sortRow(final, cols);
+                for (int i = 0; i < cols; i++) {
+                    cout << final[i] << " " << endl;
+                }
+            }
+
+        }
+        else if (strcmp(argv[1], "sortRowsInMatrix") == 0) {
+            cout << "Ile wierszy i kolumn ma miec macierz?" << endl;
+            int rows, cols;
+            cin >> rows;
+            checkInput();
+            cin >> cols;
+            checkInput();
+            cout << "Jakiego typu macierz, int czy double?" << endl;
+            char choice[10];
+            cin >> choice;
+
+            if (strcmp(choice, "double") == 0) {
+
+
+                double **mat = createDoubleArray(rows, cols);
+
+                mat = passDoubleTheMatrix(rows, cols);
+
+                sortRowsInMatrix(mat, rows, cols);
+                printArray(mat, rows, cols);
+
+            } else if (strcmp(choice, "int") == 0) {
+
+                int **mat = createIntArray(rows, cols);
+
+                mat = passIntTheMatrix(rows, cols);
+
+                sortRowsInMatrix(mat, rows, cols);
+                printArray(mat, rows, cols);
+            }
+        }
+        else if (strcmp (argv[1], "help") == 0) {
+            help();
+        }
         else {
-            cout << "Zly input" << endl;
+            help();
         }
     }
 }
