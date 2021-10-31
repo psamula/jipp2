@@ -304,7 +304,7 @@ int main (int argc, char* argv[]) {
             }
 
         }
-        else if (strcmp(argv[1], "matrisIsDiagonal") == 0) {
+        else if (strcmp(argv[1], "matrixIsDiagonal") == 0) {
             cout << "Ile wierszy i kolumn ma miec macierz?" << endl;
             int rows, cols;
             cin >> rows;
