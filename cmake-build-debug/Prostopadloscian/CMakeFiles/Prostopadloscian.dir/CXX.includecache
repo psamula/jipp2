@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/pawel/jipp2/Prostopadloscian/include/Kula.h
+iostream
+-
+
+C:/Users/pawel/jipp2/Prostopadloscian/include/figury.h
+iostream
+-
+
+C:/Users/pawel/jipp2/Prostopadloscian/src/Figury.cpp
+../include/figury.h
+C:/Users/pawel/jipp2/Prostopadloscian/include/figury.h
+
+C:/Users/pawel/jipp2/Prostopadloscian/src/Kula.cpp
+../include/Kula.h
+C:/Users/pawel/jipp2/Prostopadloscian/include/Kula.h
+
+C:/Users/pawel/jipp2/Prostopadloscian/src/main.cpp
+iostream
+-
+../include/figury.h
+C:/Users/pawel/jipp2/Prostopadloscian/include/figury.h
+../include/Kula.h
+C:/Users/pawel/jipp2/Prostopadloscian/include/Kula.h
+

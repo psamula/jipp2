@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/pawel/jipp2/FirstClass/include/FirstClass.h
+iostream
+-
+
+C:/Users/pawel/jipp2/FirstClass/src/FirstClass.cpp
+../include/FirstClass.h
+C:/Users/pawel/jipp2/FirstClass/include/FirstClass.h
+
+C:/Users/pawel/jipp2/FirstClass/src/main.cpp
+iostream
+-
+../include/FirstClass.h
+C:/Users/pawel/jipp2/FirstClass/include/FirstClass.h
+
