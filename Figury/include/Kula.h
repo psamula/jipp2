@@ -1,6 +1,6 @@
 
-#ifndef JIPP_2_LABS_FIRSTCLASS_H
-#define JIPP_2_LABS_FIRSTCLASS_H
+#ifndef JIPP_2_LABS_KULA_H
+#define JIPP_2_LABS_KULA_H
 #include <iostream>
 
 using namespace std;
